@@ -3,3 +3,7 @@ pandas
 matplotlib
 mlflow
 seaborn
+imblearn
+xgboost
+lightgbm
+catboost
