@@ -11,3 +11,6 @@ thunderEnv
 
 # no pdf file
 data/raw/*.pdf
+
+#mlflow 
+*.db
