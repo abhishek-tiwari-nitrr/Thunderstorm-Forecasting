@@ -14,3 +14,7 @@ data/raw/*.pdf
 
 #mlflow 
 *.db
+
+# cache 
+notebook/catboost_info
+notebook/mlruns
