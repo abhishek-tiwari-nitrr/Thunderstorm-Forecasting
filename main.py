@@ -2,6 +2,8 @@ from src.ml_engine import predict
 import streamlit as st
 from src.config import APP_ICON, APP_TITLE
 
+# Page configuration
+
 st.set_page_config(
     page_title=APP_TITLE,
     page_icon=APP_ICON,
@@ -14,6 +16,8 @@ st.divider()
 
 
 st.subheader("Atmospheric Indices")
+
+# Input form
 
 col1, col2, col3, col4 = st.columns(4)
 with col1:
@@ -64,6 +68,8 @@ with col11:
 
 st.divider()
 
+# Prediction
+
 _, btn_col = st.columns([3, 1])
 with btn_col:
     run = st.button("⚡ Run Prediction", type="primary", width="stretch")
@@ -95,9 +101,9 @@ if run:
 
     if result == "Storm":
         st.error(
-            "⛈️ **Storm predicted** — thunderstorm conditions are likely tomorrow."
+            "⛈️ **Storm predicted** - thunderstorm conditions are likely tomorrow."
         )
     else:
         st.success(
-            "☀️ **No Storm** — conditions do not indicate a thunderstorm tomorrow."
+            "☀️ **No Storm** - conditions do not indicate a thunderstorm tomorrow."
         )

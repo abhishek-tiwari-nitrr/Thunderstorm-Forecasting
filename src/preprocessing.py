@@ -21,6 +21,15 @@ def _shift_log_conversion(col: pd.Series) -> pd.Series:
 
 
 def _apply_transformation(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Dispatch each column to its designated transform.
+
+    Args:
+        - df: Single row DataFrame with the raw input columns collected from the Streamlit form
+
+    Returns:
+        - pd.DataFrame: Data Frame with transform data for given cols in Config
+    """
     for col in log_cols:
         if col in df.columns:
             df[col] = _log_conversion(df[col])
@@ -34,6 +43,17 @@ def _apply_transformation(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def preprocessing(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Transform raw inference input into the feature space expected by the model.
+
+    Args:
+        - df: Single row DataFrame with the raw input columns collected from the Streamlit form
+
+    Returns:
+        - pd.DataFrame: Transformed DataFrame ready to pass to model.predict().
+    """
+
+    # Feature engineering
     df["Environmental Stability"] = df["Showalter Index"] + df["Lifted Index"]
     df["Moisture Indices"] = df["PRECIPITABLE WATER"]
     df["Convective Potential"] = (
@@ -42,6 +62,7 @@ def preprocessing(df: pd.DataFrame) -> pd.DataFrame:
     df["Temperature Pressure"] = df["1000-500 THICKNESS"]
     df["Moisture Temperature Profiles"] = df["PLCL"]
 
+    # Drop source columns
     cols_to_drop = [
         "Showalter Index",
         "Lifted Index",
@@ -58,6 +79,7 @@ def preprocessing(df: pd.DataFrame) -> pd.DataFrame:
     df.drop(columns=cols_to_drop, inplace=True, errors="ignore")
     logger.info("Feature engineering complete")
 
+    # Skewness corrections
     df = _apply_transformation(df)
     logger.info("Preprocessing complete for inference request")
     return df

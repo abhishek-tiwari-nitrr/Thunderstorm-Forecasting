@@ -9,10 +9,22 @@ import streamlit as st
 
 @st.cache_resource
 def _cached_model():
+    """
+    Load the model once per Streamlit session via the singleton loader.
+    """
     return get_model()
 
 
 def predict(input_data: dict) -> str:
+    """
+    Run end-to-end inference for a single observation.
+
+    Args:
+        - input_data: Mapping of feature name : raw numeric value, exactly as collected from the Streamlit input widgets.
+
+    Returns:
+        - "Storm" if the model predicts a thunderstorm event, otherwise "No Storm".
+    """
     logger.info("Prediction request received")
     model = _cached_model()
     df = pd.DataFrame([input_data])

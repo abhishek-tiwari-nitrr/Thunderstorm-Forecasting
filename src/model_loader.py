@@ -6,11 +6,27 @@ from src.logger import logger
 
 
 class _ModelLoader:
+    """
+    Internal singleton holder. Instantiated once at module level.
+
+    Method:
+        - load(): For Loading Model. It is safe to call from multiple threads simultaneously.
+    """
+
     def __init__(self) -> None:
         self._model = None
         self._lock = threading.Lock()
 
     def load(self, model_path: Path = MODEL_DIR):
+        """
+        Return the loaded model, loading it on the first call.
+
+        Args:
+            - model_path: Path to the .pkl file. Defaults to the value set in src.config.MODEL_DIR
+
+        Returns:
+            - The deserialised model object.
+        """
         if self._model is not None:
             return self._model
 
@@ -38,4 +54,10 @@ _loader = _ModelLoader()
 
 
 def get_model():
+    """
+     Public accessor for the singleton model.
+
+    Returns:
+        - The deserialised model object.
+    """
     return _loader.load()
