@@ -1,6 +1,9 @@
 # ⛈️ Thunderstorm Forecasting
 
-A machine learning application that predicts whether a **thunderstorm will occur the following day** based on atmospheric sounding indices.
+[![Python 3.11+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/)
+[![Live App](https://img.shields.io/badge/Live%20App-Streamlit-brightgreen)](https://abhishek-tiwari-nitrr-thunderstorm-forecasting.streamlit.app/)
+
+> A machine learning application that predicts whether a **thunderstorm will occur the following day** based on atmospheric sounding indices.
 
 ---
 
@@ -53,6 +56,8 @@ uv sync
 # 4. Run the app
 uv run streamlit run main.py
 ```
+
+---
 
 ## Tech stack
 
