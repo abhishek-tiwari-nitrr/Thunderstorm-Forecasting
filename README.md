@@ -59,6 +59,13 @@ uv run streamlit run main.py
 
 ---
 
+## 📺 Demo
+
+[![Thunderstorm Forecasting Demo](https://img.youtube.com/vi/l6QeBEMpkJ4/maxresdefault.jpg)](https://youtu.be/l6QeBEMpkJ4)
+
+
+---
+
 ## Tech stack
 
 | Layer | Technology |
