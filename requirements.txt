@@ -1,9 +1,4 @@
-ipykernel
+streamlit
 pandas
-matplotlib
-mlflow
-seaborn
-imblearn
-xgboost
-lightgbm
-catboost
+scikit-learn
+imbalanced-learn
