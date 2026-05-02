@@ -11,6 +11,8 @@ def _setup_logs() -> logging.Logger:
         - logging.Logger: A configured logger instance name "TSF"
     """
     log = logging.getLogger("TSF")
+
+    # Already initialised
     if log.handlers:
         return log
 
@@ -20,7 +22,7 @@ def _setup_logs() -> logging.Logger:
         filename=LOG_DIR / "app.log",
         mode="a",
         encoding="utf-8",
-        maxBytes=1024**2 * 5,
+        maxBytes=1024**2 * 5, # 5 MB file 
         backupCount=3,
     )
 
@@ -34,6 +36,7 @@ def _setup_logs() -> logging.Logger:
     log.setLevel(logging.INFO)
     log.propagate = False
 
+    log.info("Logger initialised (singleton)")
     return log
 
 
