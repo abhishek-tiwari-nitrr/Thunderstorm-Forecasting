@@ -18,3 +18,4 @@ data/raw/*.pdf
 # cache 
 notebook/catboost_info
 notebook/mlruns
+logs
